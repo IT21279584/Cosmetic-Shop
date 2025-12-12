@@ -59,7 +59,7 @@ app.use(
   })
 );
 
-app.options("*", cors());
+app.options("/*", cors());
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
@@ -144,7 +144,7 @@ app.use("/api/*", (req, res) => {
 });
 
 // Catch-all for non-API routes (for SPA routing)
-app.use("*", (req, res) => {
+app.use("/*", (req, res) => {
   // Don't send 404 for non-API routes as they might be frontend routes
   if (!req.originalUrl.startsWith("/api")) {
     res.status(404).json({
