@@ -134,31 +134,31 @@ app.use("/api/payment", paymentRoutes);
 app.use("/api/admin", adminRoutes);
 
 // 404 handler for API routes
-app.use("/api/*", (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: "API endpoint not found",
-    path: req.originalUrl,
-    method: req.method,
-  });
-});
+// app.use("/api/*", (req, res) => {
+//   res.status(404).json({
+//     success: false,
+//     message: "API endpoint not found",
+//     path: req.originalUrl,
+//     method: req.method,
+//   });
+// });
 
 // Catch-all for non-API routes (for SPA routing)
-app.use("/(.*)", (req, res) => {
-  // Don't send 404 for non-API routes as they might be frontend routes
-  if (!req.originalUrl.startsWith("/api")) {
-    res.status(404).json({
-      success: false,
-      message: "Route not found. This is an API server.",
-      suggestion: "Check if you meant to access an /api/* endpoint",
-    });
-  } else {
-    res.status(404).json({
-      success: false,
-      message: "Resource not found",
-    });
-  }
-});
+// app.use("/(.*)", (req, res) => {
+//   // Don't send 404 for non-API routes as they might be frontend routes
+//   if (!req.originalUrl.startsWith("/api")) {
+//     res.status(404).json({
+//       success: false,
+//       message: "Route not found. This is an API server.",
+//       suggestion: "Check if you meant to access an /api/* endpoint",
+//     });
+//   } else {
+//     res.status(404).json({
+//       success: false,
+//       message: "Resource not found",
+//     });
+//   }
+// });
 
 // Global error handler (must be last)
 app.use(errorHandler);
