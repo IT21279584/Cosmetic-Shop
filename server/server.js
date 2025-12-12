@@ -2,7 +2,10 @@ require("dotenv").config();
 const app = require("./src/app");
 const connectDB = require("./src/config/database");
 
-// Only run server if not in Vercel environment
+// Connect to database (works for both local and Vercel)
+connectDB();
+
+// Only start server if NOT in Vercel serverless environment
 if (process.env.VERCEL !== "1") {
   // Handle uncaught exceptions
   process.on("uncaughtException", (err) => {
@@ -11,14 +14,10 @@ if (process.env.VERCEL !== "1") {
     process.exit(1);
   });
 
-  // Connect to database and start server
-  const startServer = async () => {
-    try {
-      await connectDB();
-
-      const PORT = process.env.PORT || 5000;
-      const server = app.listen(PORT, () => {
-        console.log(`
+  // Start server for local development
+  const PORT = process.env.PORT || 5000;
+  const server = app.listen(PORT, () => {
+    console.log(`
   ╔════════════════════════════════════════╗
   ║                                        ║
   ║   🌸 Cosmetic Shop API Server 🌸     ║
@@ -28,33 +27,28 @@ if (process.env.VERCEL !== "1") {
   ║   URL: http://localhost:${PORT}          ║
   ║                                        ║
   ╚════════════════════════════════════════╝
-        `);
-      });
+    `);
+  });
 
-      // Handle unhandled promise rejections
-      process.on("unhandledRejection", (err) => {
-        console.error("UNHANDLED REJECTION! 💥 Shutting down...");
-        console.error(err.name, err.message);
-        server.close(() => {
-          process.exit(1);
-        });
-      });
-
-      // Graceful shutdown
-      process.on("SIGTERM", () => {
-        console.log("👋 SIGTERM RECEIVED. Shutting down gracefully");
-        server.close(() => {
-          console.log("💥 Process terminated!");
-          mongoose.connection.close();
-        });
-      });
-    } catch (error) {
-      console.error("Failed to start server:", error);
+  // Handle unhandled promise rejections
+  process.on("unhandledRejection", (err) => {
+    console.error("UNHANDLED REJECTION! 💥 Shutting down...");
+    console.error(err.name, err.message);
+    server.close(() => {
       process.exit(1);
-    }
-  };
+    });
+  });
 
-  startServer();
+  // Graceful shutdown
+  process.on("SIGTERM", () => {
+    console.log("👋 SIGTERM RECEIVED. Shutting down gracefully");
+    server.close(() => {
+      console.log("💥 Process terminated!");
+    });
+  });
 } else {
   console.log("Running in Vercel serverless environment");
 }
+
+// Export the Express app for Vercel
+module.exports = app;
