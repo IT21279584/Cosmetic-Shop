@@ -302,6 +302,59 @@ const ProductDetails = () => {
                 Quantity
               </label>
 
+              {/* Mobile Layout - Stacked */}
+              <div className="flex flex-col gap-3 sm:hidden">
+                {/* Quantity Selector */}
+                <div className="flex items-center justify-center bg-gray-100 border-2 border-gray-200 rounded-xl">
+                  <button
+                    onClick={() => handleQuantityChange(quantity - 1)}
+                    className="p-3 transition-all hover:bg-gray-200 rounded-l-xl disabled:opacity-50"
+                    disabled={quantity <= 1}
+                  >
+                    <FaMinus className="text-gray-700" size={14} />
+                  </button>
+                  <span className="px-6 py-3 text-lg font-bold text-gray-900 min-w-[60px] text-center">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => handleQuantityChange(quantity + 1)}
+                    className="p-3 transition-all hover:bg-gray-200 rounded-r-xl disabled:opacity-50"
+                    disabled={quantity >= product.stock}
+                  >
+                    <FaPlus className="text-gray-700" size={14} />
+                  </button>
+                </div>
+
+                {/* Action Buttons Row */}
+                <div className="flex gap-2">
+                  {/* Add to Cart Button */}
+                  <button
+                    onClick={handleAddToCart}
+                    disabled={product.stock <= 0}
+                    className="flex items-center justify-center flex-1 gap-2 px-4 py-3 text-sm font-bold text-white transition-all bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <FaShoppingCart size={16} />
+                    {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
+                  </button>
+
+                  {/* Wishlist Button */}
+                  <button
+                    onClick={handleWishlistToggle}
+                    className={`p-3 rounded-xl transition-all hover:scale-110 ${
+                      inWishlist
+                        ? "bg-gradient-to-r from-red-500 to-pink-600 text-white shadow-lg"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    {inWishlist ? (
+                      <FaHeart size={20} />
+                    ) : (
+                      <FaRegHeart size={20} />
+                    )}
+                  </button>
+                </div>
+              </div>
+
               {/* Desktop Layout - Side by side */}
               <div className="items-center hidden gap-2 sm:flex">
                 {/* Quantity Selector */}

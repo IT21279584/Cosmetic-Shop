@@ -321,33 +321,34 @@ const AddCategory = () => {
   const hasDuplicate = duplicateWarning !== "";
 
   return (
-    <div className="min-h-screen px-4 py-8 bg-gray-50">
+    <div className="min-h-screen px-4 py-6 bg-gray-50 sm:px-6 sm:py-8 lg:px-8">
       <AdminSidebar />
 
       <div className="max-w-2xl mx-auto">
-        <div className="p-6 bg-white rounded-lg shadow-md">
-          <div className="flex items-center justify-between mb-6">
-            <h1 className="text-3xl font-bold text-gray-800">
+        <div className="p-4 bg-white rounded-lg shadow-md sm:p-6">
+          <div className="flex flex-col items-start justify-between gap-3 mb-4 sm:flex-row sm:items-center sm:mb-6">
+            <h1 className="text-2xl font-bold text-gray-800 sm:text-3xl">
               Add New Category
             </h1>
             <Button
               variant="outline"
               onClick={() => navigate("/admin/categories")}
+              className="w-full sm:w-auto"
             >
               Back to List
             </Button>
           </div>
 
           {/* Info Box */}
-          <div className="p-4 mb-6 border rounded-lg border-primary-200 bg-primary-50">
-            <h3 className="mb-2 text-sm font-semibold text-primary-800">
+          <div className="p-3 mb-4 border rounded-lg sm:p-4 sm:mb-6 border-primary-200 bg-primary-50">
+            <h3 className="mb-2 text-xs font-semibold sm:text-sm text-primary-800">
               📌 Main Categories (Fixed):
             </h3>
             <div className="flex flex-wrap gap-2">
               {MAIN_CATEGORIES.map((cat) => (
                 <span
                   key={cat}
-                  className="px-3 py-1 text-sm font-medium rounded-full text-primary-800 bg-primary-100"
+                  className="px-2 py-1 text-xs font-medium rounded-full sm:px-3 sm:text-sm text-primary-800 bg-primary-100"
                 >
                   {cat}
                 </span>
@@ -358,7 +359,7 @@ const AddCategory = () => {
             </p>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             {/* STEP 1: Select Main Category */}
             <div>
               <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -369,7 +370,7 @@ const AddCategory = () => {
                 name="mainCategory"
                 value={formData.mainCategory}
                 onChange={handleMainCategoryChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg sm:text-base focus:ring-2 focus:ring-red-500 focus:border-red-500"
                 required
               >
                 <option value="">-- Select Main Category --</option>
@@ -392,7 +393,7 @@ const AddCategory = () => {
                   name="parentCategory"
                   value={formData.parentCategory}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg sm:text-base focus:ring-2 focus:ring-red-500 focus:border-red-500"
                   required
                 >
                   <option value="">-- Select Parent --</option>
@@ -446,7 +447,7 @@ const AddCategory = () => {
                 <div className="flex items-start p-3 mt-2 border border-red-200 rounded-lg bg-red-50">
                   <span className="mr-2 text-red-600">⚠️</span>
                   <div>
-                    <p className="text-sm font-medium text-red-800">
+                    <p className="text-xs font-medium text-red-800 sm:text-sm">
                       Duplicate Category Name
                     </p>
                     <p className="mt-1 text-xs text-red-700">
@@ -466,7 +467,7 @@ const AddCategory = () => {
             />
 
             {/* Submit Buttons */}
-            <div className="flex gap-3 pt-4">
+            <div className="flex flex-col gap-3 pt-4 sm:flex-row">
               <Button
                 onClick={handleSubmit}
                 disabled={
@@ -485,6 +486,7 @@ const AddCategory = () => {
                 onClick={handleReset}
                 variant="outline"
                 disabled={loading}
+                className="w-full sm:w-auto"
               >
                 Reset
               </Button>
@@ -494,17 +496,17 @@ const AddCategory = () => {
 
         {/* Preview Section */}
         {formData.name && formData.parentCategory && !hasDuplicate && (
-          <div className="p-6 mt-6 bg-white rounded-lg shadow-md">
-            <h2 className="mb-4 text-xl font-semibold text-gray-800">
+          <div className="p-4 mt-4 bg-white rounded-lg shadow-md sm:p-6 sm:mt-6">
+            <h2 className="mb-3 text-lg font-semibold text-gray-800 sm:text-xl sm:mb-4">
               Preview
             </h2>
-            <div className="p-4 border border-gray-200 rounded-md">
+            <div className="p-3 border border-gray-200 rounded-md sm:p-4">
               <div className="space-y-3">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-base font-semibold text-gray-800 sm:text-lg">
                     {formData.name}
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p className="mt-1 text-xs text-gray-500 break-words sm:text-sm">
                     <strong>Full Path:</strong> {getCategoryPath()}
                   </p>
                 </div>
@@ -557,8 +559,8 @@ const AddCategory = () => {
                     .map((categoryName, index, arr) => (
                       <div
                         key={index}
-                        className="flex items-center text-sm"
-                        style={{ marginLeft: `${index * 20}px` }}
+                        className="flex items-center text-xs sm:text-sm"
+                        style={{ marginLeft: `${index * 12}px` }}
                       >
                         <span
                           className={`${

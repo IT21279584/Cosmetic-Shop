@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaStar, FaUsers, FaAward, FaLeaf } from "react-icons/fa";
+
 const Testimonials = () => {
   const testimonials = [
     {
@@ -33,30 +34,30 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16">
+    <section className="px-4 py-8 sm:py-12 lg:py-16">
       <motion.div
-        className="mb-16 text-center"
+        className="mb-8 text-center sm:mb-12 lg:mb-16"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
         <motion.div
-          className="inline-block px-4 py-2 mb-4 rounded-full bg-gradient-to-r from-red-100 to-rose-100"
+          className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 mb-3 sm:mb-4 rounded-full bg-gradient-to-r from-red-100 to-rose-100"
           whileHover={{ scale: 1.05 }}
         >
-          <span className="text-sm font-semibold text-transparent bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text">
+          <span className="text-xs font-semibold text-transparent sm:text-sm bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text">
             TESTIMONIALS
           </span>
         </motion.div>
-        <h2 className="mb-4 text-5xl font-bold text-gray-900">
+        <h2 className="mb-3 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl sm:mb-4">
           Loved by Thousands
         </h2>
-        <p className="max-w-2xl mx-auto text-xl text-gray-600">
+        <p className="max-w-2xl mx-auto text-base text-gray-600 sm:text-lg lg:text-xl">
           Real stories from our amazing community
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((testimonial, idx) => (
           <motion.div
             key={testimonial.id}
@@ -69,17 +70,17 @@ const Testimonials = () => {
           >
             {/* Gradient Glow */}
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+              className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-2xl sm:rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
             />
 
             {/* Card */}
-            <div className="relative p-8 transition-all duration-500 bg-white border border-gray-100 shadow-lg rounded-3xl hover:shadow-2xl">
+            <div className="relative p-6 transition-all duration-500 bg-white border border-gray-100 shadow-lg sm:p-8 rounded-2xl sm:rounded-3xl hover:shadow-2xl">
               {/* Quote Icon */}
               <div
-                className={`absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br ${testimonial.gradient} rounded-full flex items-center justify-center shadow-lg`}
+                className={`absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${testimonial.gradient} rounded-full flex items-center justify-center shadow-lg`}
               >
                 <svg
-                  className="w-6 h-6 text-white"
+                  className="w-5 h-5 text-white sm:w-6 sm:h-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -88,7 +89,7 @@ const Testimonials = () => {
               </div>
 
               {/* Stars */}
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-1 mb-3 sm:mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <motion.div
                     key={i}
@@ -96,18 +97,18 @@ const Testimonials = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.1 + i * 0.1 }}
                   >
-                    <FaStar className="text-yellow-400" size={18} />
+                    <FaStar className="text-yellow-400" size={16} />
                   </motion.div>
                 ))}
               </div>
 
               {/* Text */}
-              <p className="mb-6 italic leading-relaxed text-gray-700">
+              <p className="mb-4 text-sm italic leading-relaxed text-gray-700 sm:text-base sm:mb-6">
                 "{testimonial.text}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+              <div className="flex items-center gap-3 pt-4 border-t border-gray-100 sm:gap-4 sm:pt-6">
                 <div className="relative">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-full blur-md opacity-40`}
@@ -115,14 +116,16 @@ const Testimonials = () => {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="relative border-2 border-white rounded-full shadow-lg w-14 h-14"
+                    className="relative border-2 border-white rounded-full shadow-lg w-12 h-12 sm:w-14 sm:h-14"
                   />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900">
+                  <h4 className="text-sm font-bold text-gray-900 sm:text-base">
                     {testimonial.name}
                   </h4>
-                  <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  <p className="text-xs text-gray-500 sm:text-sm">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </div>
@@ -132,7 +135,7 @@ const Testimonials = () => {
 
       {/* Trust Badges */}
       <motion.div
-        className="flex flex-wrap items-center justify-center gap-8 mt-16"
+        className="grid grid-cols-2 gap-4 mt-8 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-6 lg:gap-8 sm:mt-12 lg:mt-16"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -145,15 +148,18 @@ const Testimonials = () => {
         ].map((badge, idx) => (
           <motion.div
             key={idx}
-            className="flex items-center gap-2 text-gray-600"
+            className="flex items-center justify-center gap-2 text-gray-600 sm:justify-start"
             whileHover={{ scale: 1.1 }}
           >
-            <badge.icon className="text-red-600" />
-            <span className="font-medium">{badge.text}</span>
+            <badge.icon className="text-base text-red-600 sm:text-lg" />
+            <span className="text-xs font-medium sm:text-sm lg:text-base">
+              {badge.text}
+            </span>
           </motion.div>
         ))}
       </motion.div>
     </section>
   );
 };
+
 export default Testimonials;

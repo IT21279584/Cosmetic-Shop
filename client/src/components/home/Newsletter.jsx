@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { HiSparkles } from "react-icons/hi2";
 import { FaStar, FaUsers, FaAward, FaLeaf } from "react-icons/fa";
 
-
-
 const Newsletter = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,9 +23,9 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="px-4 py-16 my-16">
+    <section className="px-4 py-8 my-8 sm:py-12 sm:my-12 lg:py-16 lg:my-16">
       <motion.div
-        className="relative overflow-hidden rounded-3xl"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -47,47 +45,49 @@ const Newsletter = () => {
           />
         </div>
 
-        <div className="relative z-10 p-8 text-white lg:p-16">
-          {/* Floating Icons */}
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-white/20"
-              style={{
-                left: `${20 + i * 15}%`,
-                top: `${30 + (i % 2) * 40}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 3 + i,
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-            >
-              {i % 2 === 0 ? <HiSparkles size={24} /> : <FaLeaf size={24} />}
-            </motion.div>
-          ))}
+        <div className="relative z-10 p-6 text-white sm:p-8 md:p-10 lg:p-16">
+          {/* Floating Icons - Hidden on mobile for cleaner look */}
+          <div className="hidden md:block">
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute text-white/20"
+                style={{
+                  left: `${20 + i * 15}%`,
+                  top: `${30 + (i % 2) * 40}%`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  rotate: [0, 360],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 3 + i,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              >
+                {i % 2 === 0 ? <HiSparkles size={24} /> : <FaLeaf size={24} />}
+              </motion.div>
+            ))}
+          </div>
 
           <div className="relative z-20 max-w-3xl mx-auto text-center">
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
-              className="inline-block mb-6"
+              className="inline-block mb-4 sm:mb-6"
             >
-              <div className="flex items-center justify-center w-16 h-16 mx-auto border rounded-full bg-white/20 backdrop-blur-md border-white/40">
-                <FaPaperPlane className="text-2xl" />
+              <div className="flex items-center justify-center w-12 h-12 mx-auto border rounded-full sm:w-16 sm:h-16 bg-white/20 backdrop-blur-md border-white/40">
+                <FaPaperPlane className="text-xl sm:text-2xl" />
               </div>
             </motion.div>
 
-            <h2 className="mb-4 text-4xl font-bold lg:text-5xl">
+            <h2 className="mb-3 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">
               Join the Glow Club
             </h2>
-            <p className="mb-8 text-lg text-white/90">
+            <p className="mb-6 text-base sm:text-lg text-white/90 px-4 sm:px-0">
               Get exclusive access to new launches, beauty secrets, and special
               offers
             </p>
@@ -95,7 +95,7 @@ const Newsletter = () => {
             <div className="relative max-w-xl mx-auto">
               <div className="relative group">
                 <div className="absolute inset-0 transition-opacity bg-white rounded-full opacity-25 blur-xl group-hover:opacity-40" />
-                <div className="relative flex flex-col gap-3 p-2 border rounded-full sm:flex-row bg-white/10 backdrop-blur-xl border-white/30">
+                <div className="relative flex flex-col gap-3 p-2 border rounded-2xl sm:rounded-full sm:flex-row bg-white/10 backdrop-blur-xl border-white/30">
                   <input
                     type="email"
                     value={email}
@@ -103,13 +103,13 @@ const Newsletter = () => {
                     placeholder="Your email address"
                     required
                     disabled={subscribed}
-                    className="flex-1 px-6 py-3 text-gray-900 placeholder-gray-500 rounded-full bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="flex-1 px-4 py-3 text-sm text-gray-900 placeholder-gray-500 sm:px-6 sm:text-base rounded-2xl sm:rounded-full bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50"
                   />
                   <motion.button
                     type="button"
                     onClick={handleSubmit}
                     disabled={loading || subscribed || !email}
-                    className="px-8 py-3 font-semibold text-red-600 transition-colors bg-white rounded-full hover:bg-gray-100 disabled:opacity-50 whitespace-nowrap"
+                    className="px-6 py-3 text-sm font-semibold text-red-600 transition-colors bg-white sm:px-8 sm:text-base rounded-2xl sm:rounded-full hover:bg-gray-100 disabled:opacity-50 whitespace-nowrap"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -123,10 +123,10 @@ const Newsletter = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-6 mt-8 text-sm text-white/80">
+            <div className="flex flex-col items-center justify-center gap-3 mt-6 text-xs sm:flex-row sm:gap-6 sm:mt-8 sm:text-sm text-white/80">
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -140,7 +140,7 @@ const Newsletter = () => {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >

@@ -71,12 +71,14 @@ const AdminSidebar = () => {
                 C
               </span>
             </div>
-            <div>
-              <h1 className="text-base font-bold text-gray-900 sm:text-lg">
-                CosmeticShop
-              </h1>
-              <p className="text-xs text-gray-500">Admin Panel</p>
-            </div>
+            <Link to="/" className="cursor-pointer">
+              <div>
+                <h1 className="text-base font-bold text-gray-900 sm:text-lg">
+                  CosmeticShop
+                </h1>
+                <p className="text-xs text-gray-500">Admin Panel</p>
+              </div>
+            </Link>
           </div>
         </div>
 

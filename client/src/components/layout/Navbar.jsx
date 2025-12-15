@@ -18,7 +18,7 @@ import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 import useWishlist from "../../hooks/useWishlist";
 import categoryService from "../../services/categoryService";
-import Input from "../common/Input"
+import Input from "../common/Input";
 
 const MAIN_CATEGORIES = [
   { id: "women", name: "Women", slug: "women" },
@@ -418,7 +418,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100 animate-slideDown max-h-[calc(100vh-80px)] overflow-y-auto">
+          <div className="md:hidden py-4 border-t border-gray-100 animate-slideDown max-h-[calc(100vh-80px)] overflow-y-auto scrollbar-hide">
             {/* Search - Mobile */}
             <form onSubmit={handleSearch} className="mb-4">
               <div className="relative">
@@ -554,7 +554,7 @@ const Navbar = () => {
               </Link>
 
               {/* Mobile Auth */}
-              <div className="pt-4 mt-4 space-y-2 border-t border-gray-200">
+              <div className="pt-4 mt-4 mb-4 space-y-2 border-t border-gray-200">
                 {isAuthenticated ? (
                   <>
                     <div className="p-4 mb-3 bg-gradient-to-r from-primary-50 to-primary-100 rounded-xl">
@@ -617,7 +617,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       to="/register"
-                      className="block px-4 py-3 font-semibold text-center text-white transition-all bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl hover:shadow-lg"
+                      className="block px-4 py-3 mt-3 font-semibold text-center text-white transition-all bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl hover:shadow-lg"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Create Account
@@ -644,6 +644,13 @@ const Navbar = () => {
         }
         .animate-slideDown {
           animation: slideDown 0.3s ease-out;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </nav>

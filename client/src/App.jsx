@@ -6,6 +6,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import ErrorBoundary from "./components/common/ErrorBoundary";
+import "./custom-toast.css";
 
 function App() {
   return (
@@ -25,7 +26,9 @@ function App() {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light"
+                className="custom-toast-container"
+                toastClassName="custom-toast"
+                bodyClassName="custom-toast-body"
               />
             </div>
           </WishlistProvider>
