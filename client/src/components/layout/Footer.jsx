@@ -144,10 +144,21 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm space-y-2">
           <p>
             &copy; {new Date().getFullYear()} Cosmetic Shop. All rights
             reserved.
+          </p>
+          <p className="text-gray-400">
+            Developed by{" "}
+            <a
+              href="https://oriondigitallab.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-400 hover:text-primary-500 transition-colors font-medium"
+            >
+              Orion Digital Lab
+            </a>
           </p>
         </div>
       </div>
