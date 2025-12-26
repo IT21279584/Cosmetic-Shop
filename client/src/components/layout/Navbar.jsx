@@ -19,6 +19,7 @@ import useCart from "../../hooks/useCart";
 import useWishlist from "../../hooks/useWishlist";
 import categoryService from "../../services/categoryService";
 import Input from "../common/Input";
+import logo from "../../assets/logo.png";
 
 const MAIN_CATEGORIES = [
   { id: "women", name: "Women", slug: "women" },
@@ -170,12 +171,19 @@ const Navbar = () => {
         >
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="flex items-center justify-center w-12 h-12 transition-transform duration-300 shadow-lg bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl group-hover:scale-110">
-              <span className="text-2xl font-bold text-white">E</span>
+            {/* Logo container - always visible */}
+            <div className="flex items-center justify-center w-12 h-12 transition-transform duration-300 rounded-2xl group-hover:scale-110">
+              <img
+                src={logo}
+                alt="Nova Beauty Logo"
+                className="object-contain max-w-full max-h-full"
+              />
             </div>
-            <div className="flex-col hidden sm:flex">
+
+            {/* Text container - now visible on all screens */}
+            <div className="flex flex-col">
               <span className="text-xl font-bold tracking-tight text-gray-900">
-                essentials
+                Nova Beauty
               </span>
               <span className="text-xs font-medium text-primary-600">
                 beautiful everyday
