@@ -2,10 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Title & Meta Description -->
+    <title>Nova Beauty | Premium Cosmetics Store</title>
+    <meta name="description" content="Nova Beauty - Premium cosmetics store in Sri Lanka. Explore makeup, skincare, and beauty essentials for every occasion. Quality products at affordable prices." />
+    <meta name="author" content="Nova Beauty" />
+    <meta name="keywords" content="Nova Beauty, cosmetics, makeup, skincare, beauty products, Sri Lanka, premium cosmetics, beauty store" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Nova Beauty | Premium Cosmetics Store" />
+    <meta property="og:description" content="Explore makeup, skincare, and beauty essentials at Nova Beauty. Quality cosmetics for every occasion." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nova Beauty" />
+    <meta property="og:image" content="/og-image.png" /> <!-- optional preview image -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nova Beauty | Premium Cosmetics Store" />
+    <meta name="twitter:description" content="Explore makeup, skincare, and beauty essentials at Nova Beauty. Quality cosmetics for every occasion." />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Nova Beauty",
+      "description": "Premium cosmetics store offering makeup, skincare, and beauty essentials.",
+      "url": "https://novabeauty.lk",
+      "logo": "https://novabeauty.lk/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+94-77-123-4567",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Sinhala"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Colombo",
+        "addressCountry": "LK"
+      }
+    }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
